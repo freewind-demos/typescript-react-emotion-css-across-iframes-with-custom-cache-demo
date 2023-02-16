@@ -1,24 +1,23 @@
-import React, {FC, useState} from 'react';
-import {css} from '@emotion/css';
+import React, {FC} from 'react';
+import {css} from "@emotion/css";
 
-const styles = {
-  root: css`
-    border: 1px solid red
-  `,
-  text: (color: string) => css`
-    color: ${color}
-  `
-}
 type Props = {};
 
 export const Hello: FC<Props> = ({}) => {
-  const [color, setColor] = useState<string>('')
+    function createNewDivOnTop() {
+        console.log("### createNewDivOnTop")
+        let doc = window.top!.document;
+        const newDiv = doc.createElement('div')
+        newDiv.className = css`
+          font-size: 50px;
+          color: red;
+        `
+        doc.body.append(newDiv);
+        newDiv.innerText = 'emotion css does not work and not easy to fix'
+    }
 
-  return <div className={styles.root}>
-    <div className={styles.text('red')}>Red</div>
-    <div className={styles.text('blue')}>Blue</div>
-    <div className={styles.text(color)}>
-      Input: <input type={'text'} value={color} onChange={event => setColor(event.target.value)}/>
+    return <div>
+        <div>Inner</div>
+        <button onClick={() => createNewDivOnTop()}>Create new div on top</button>
     </div>
-  </div>;
 }

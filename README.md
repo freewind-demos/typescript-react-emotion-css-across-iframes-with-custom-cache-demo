@@ -1,12 +1,14 @@
-TypeScript React Emotion Css Demo
+TypeScript React Emotion Css Across IFrame Demo
 =================================
 
-可以使用Emotion方便的定义复杂的css，还可以动态定义。
-当某个emotion接收到了新的参数，会自动生成一个新的className
+在一个frame中使用emotion为另一个frame中的元素定义样式。
+
+有一些办法可以做到，但是太麻烦了：
+https://stackoverflow.com/questions/59098769/how-to-render-a-react-component-styled-with-emotion-in-an-iframe-in-gatsby-site
 
 ```
 npm install
-npm run demo
+npm start
 ```
 
 It will open page on browser automatically.
