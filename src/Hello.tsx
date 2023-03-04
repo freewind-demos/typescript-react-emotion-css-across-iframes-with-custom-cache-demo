@@ -1,23 +1,15 @@
-import React, {FC} from 'react';
-import {css} from "@emotion/css";
+import { css } from '@emotion/react';
+import { FC, useState } from 'react';
+import { TopWindowPortal } from './TopWindowPortal';
 
-type Props = {};
-
-export const Hello: FC<Props> = ({}) => {
-    function createNewDivOnTop() {
-        console.log("### createNewDivOnTop")
-        let doc = window.top!.document;
-        const newDiv = doc.createElement('div')
-        newDiv.className = css`
-          font-size: 50px;
-          color: red;
-        `
-        doc.body.append(newDiv);
-        newDiv.innerText = 'emotion css does not work and not easy to fix'
-    }
+export const Hello: FC = () => {
+    const [show, setShow] = useState(false);
 
     return <div>
         <div>Inner</div>
-        <button onClick={() => createNewDivOnTop()}>Create new div on top</button>
+        <button onClick={() => setShow(true)}>Create new div on top</button>
+        {show && <TopWindowPortal>
+            <button css={css`color: red; font-size: 50px;`}>Hi!</button>
+        </TopWindowPortal>}
     </div>
 }
