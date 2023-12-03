@@ -1,21 +1,15 @@
-import createCache from '@emotion/cache';
-import { CacheProvider } from "@emotion/react";
-import { FC, useEffect, useMemo } from "react";
+import React, { FC, useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
 
-export const TopWindowPortal: FC = ({ children }) => {
-    const container = useMemo(() => document.createElement('div'), []);
-    const cache = useMemo(() => createCache({
-        key: 'top-window',
-        container
-    }), [])
+export const TopWindowPortal: FC = ({children}) => {
+    const container = useMemo(() => window.top!.document.createElement('div'), []);
 
     useEffect(() => {
-        window.top?.document.body.appendChild(container);
+        window.top!.document.body.appendChild(container);
     }, [container])
 
     return ReactDOM.createPortal(
-        <CacheProvider value={cache}>{children}</CacheProvider>,
+        children,
         container
     )
 }

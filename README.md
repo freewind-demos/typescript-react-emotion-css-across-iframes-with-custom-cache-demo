@@ -1,9 +1,9 @@
-TypeScript React Emotion Css Across IFrame Demo
+TypeScript React Emotion Css Across IFrame with Custom Cache Demo
 =================================
 
-在一个frame中使用emotion为另一个frame中的元素定义样式。
+在一个frame中使用emotion/css为另一个frame中的元素定义样式。
 
-需要使用@emotion/cache和@emotion/react，同时还需要配置vite.config.ts和tsconfig.json等
+为了简单，只使用 `@emotion/css` 而不使用 `@emotion/react`
 
 ```
 npm install
